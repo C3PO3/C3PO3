@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(188, 233, 255);
+}
+  
+h1 {
+    color: rgb(1, 1, 88);
+    text-align:center;
+}
+
+/* top bar style */
+.navbar {
+    overflow: hidden;
+    background-color: rgb(124, 0, 97);
+    font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    font-size: 16px;
+    /* color of text, centering of links, padding between header links */
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* hyperlink formatting */
+a {
+    color: rgb(212, 0, 166);
+}
+
+/* stop auto newline after p tags */
+p {
+    display: inline;
+}
+
+/* Change background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgb(212, 0, 166);
+}
+
+.footer { 
+    /* position: sticky;  */
+    bottom: 0; 
+    text-align:center;
+    z-index: 10;
+    background-color: rgb(124, 0, 97);
+    color: white;
+}

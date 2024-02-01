@@ -30,6 +30,10 @@ a {
     color: rgb(212, 0, 166);
 }
 
+a:hover {
+    color: rgb(255, 180, 239);
+}
+
 /* stop auto newline after p tags */
 p {
     display: inline;

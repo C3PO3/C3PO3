@@ -43,6 +43,15 @@ p {
     background-color: rgb(212, 0, 166);
 }
 
+figure {
+    display: table;
+  }
+  
+figcaption {
+    display: table-caption;
+    caption-side: bottom;
+}
+
 .footer { 
     /* position: sticky;  */
     bottom: 0; 

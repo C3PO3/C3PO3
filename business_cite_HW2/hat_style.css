@@ -43,6 +43,13 @@ p {
     background-color: rgb(212, 0, 166);
 }
 
+/* make images of this class so that no newline and images can be adjacent */
+.adjacent_img {
+    display:inline-block;
+    /* Added to make align by top not bottom text */
+    vertical-align: top;
+}
+
 figure {
     display: table;
   }

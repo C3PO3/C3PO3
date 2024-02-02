@@ -1,9 +1,9 @@
 body {
-    background-color: rgb(188, 233, 255);
+    background-color: rgb(226, 218, 255);
 }
 
 h1 {
-    color: rgb(1, 1, 88);
+    color: rgb(124, 0, 97);
 }
 
 /* top bar style */
@@ -18,7 +18,7 @@ h1 {
     float: left;
     font-size: 16px;
     /* color of text, centering of links, padding between header links */
-    color: white;
+    color: rgb(234, 216, 55);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -26,7 +26,7 @@ h1 {
 
 /* hyperlink formatting */
 a {
-    color: rgb(212, 0, 166);
+    color: rgb(234, 216, 55);
 }
 
 a:hover {
@@ -40,7 +40,8 @@ p {
 
 /* Change background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: rgb(212, 0, 166);
+    background-color: rgb(230, 87, 233);
+    color: rgb(234, 216, 5);
 }
 
 /* make images of this class so that no newline and images can be adjacent */

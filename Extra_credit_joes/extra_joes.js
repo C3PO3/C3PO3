@@ -37,7 +37,7 @@ var total_cost = 0;
 for (item in menu) {
     total_cost += menu[item] * orders[item];
 }
-document.write("subtotal before discount: $" + showMoney(total_cost) + "<br>");
+document.write("<b>subtotal before discount:</b> $" + showMoney(total_cost) + "<br>");
 
 /**********************************************************************************
  * COPIED FROM THE ORIGINAL JOES CODE SINCE THERE WERE NO ADDITIONAL INSTRUCTIONS *

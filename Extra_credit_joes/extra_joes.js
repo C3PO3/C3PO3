@@ -1,5 +1,11 @@
 // Create a second version of the assignment as follows
 
+var header = "<h1>Joes Extra Special Dogs</h1>"
+// making nice header for cite within javascript
+document.write(header);
+
+document.write("<h3>Receipt:</h3>");
+
 // Use an associative array for the item names and prices
 var menu = {
     hotdogs: 4.65,
@@ -37,7 +43,7 @@ var total_cost = 0;
 for (item in menu) {
     total_cost += menu[item] * orders[item];
 }
-document.write("<b>subtotal before discount:</b> $" + showMoney(total_cost) + "<br>");
+document.write("<b>Subtotal before discount:</b> $" + showMoney(total_cost) + "<br>");
 
 /**********************************************************************************
  * COPIED FROM THE ORIGINAL JOES CODE SINCE THERE WERE NO ADDITIONAL INSTRUCTIONS *
@@ -48,16 +54,16 @@ discount = total_cost * 0.1;
 if (total_cost >= 25) {
     // reround in case the discount made the places not line up
     total_cost -= discount;
-    document.write("discount: $" + showMoney(discount) + "<br>");
+    document.write("<b>Discount:</b> $" + showMoney(discount) + "<br>");
 }
-document.write("subtotal after discount: $" + showMoney(total_cost) + "<br>");
+document.write("<b>Subtotal after discount: </b>$" + showMoney(total_cost) + "<br>");
 
 // Add 6.25% Massachusetts meals tax to the new subtotal
 // This is the final amount the customer will need to pay.
 tax = total_cost * 0.0625;
-document.write("tax amount: $" + showMoney(tax) + "<br>");
+document.write("<b>Tax amount: </b>$" + showMoney(tax) + "<br>");
 
 total_cost = total_cost + tax;
-document.write("final total: $" + showMoney(total_cost));
+document.write("<b>Final total: </b>$" + showMoney(total_cost));
 
 

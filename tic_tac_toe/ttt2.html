@@ -1,0 +1,92 @@
+<!-- Author: Cordelia Ludden
+     Date: 2/19/24
+ -->
+
+
+<!-- INSTRUCTIONS -->
+
+<!-- use provided js code to make boxes and modify css as needed -->
+<!-- Also in Part 2:
+ Add a cool title on the page above the squares using an H1
+ Add a <div> to indicate whether it is X’s turn or O’s turn – put a border around it so that we
+can see its placement
+ Add a <div> on the page to display a win condition (you will use this next week) – put a
+border around it so that we can see its placement -->
+
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Tic Tac Toe!</title>
+        <style>
+            .square {
+                width: 100px;
+                height: 100px;
+                border: 2px solid black;
+                margin: 5px;
+                /* stop auto newline and display flex*/
+                display: inline-flex;
+                /* center text */
+                justify-content: center;
+                align-items: center;
+                /* font size */
+                font-size: 300%;
+            }
+
+            .square:hover {
+                background-color: grey;
+            }
+
+            /* #sq3, #sq6 {
+            } */
+
+            .turn_track {
+                width: 200px;
+                border: 2px solid rgb(173, 205, 246);
+                background-color: rgb(133, 170, 219);
+                margin: 5px;
+                text-align: center;
+            }
+
+        </style>
+
+        <!-- provided javascript -->
+        <script>
+            // Add a cool title on the page above the squares using an H1
+            document.write("<h1>Here We Go: Tic Tac Toe</h1>");
+
+            const NUM_SQUARES = 9;
+            for (i=0; i<NUM_SQUARES; i++)
+            {
+                id = "sq"+i;
+                document.write("<div class='square' id='" + id + "'>X</div>");
+            }
+
+            turn_tr = document.getElementsByClassName("turn_track");  // Find the element
+            function pick_start() {
+                val = Math.floor(Math.random() * 10)
+                if(val <= 4) {
+                    turn_tr[0].innerText = "Its currently O's turn!";
+                }
+            }
+        </script>
+
+    </head>
+    <body>
+        <!-- Add a <div> to indicate whether it is X’s turn or O’s turn – put a border around it so that we
+        can see its placement -->
+        <div class = "turn_track">
+            Its currently X's turn!
+        </div>
+
+        <!-- Add a <div> on the page to display a win condition (you will use this 
+        next week) – put a border around it so that we can see its placement -->
+
+        <!-- run this right before game starts -->
+        <script>
+            pick_start();
+        </script>
+    </body>
+</html>

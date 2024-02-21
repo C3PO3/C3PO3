@@ -157,6 +157,13 @@
 
             // reset the board for a new game
             function reset() {
+                //make random whose turn it is again
+                xo = "X";
+                val = Math.floor(Math.random() * 10)
+                if(val <= 4) {
+                    xo = "O"
+                }
+                turn_change();
                 squares.forEach(
                     function(square) {
                         square.textContent = '';

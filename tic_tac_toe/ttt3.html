@@ -1,0 +1,159 @@
+<!-- Author: Cordelia Ludden
+     Date: 2/21/24
+ -->
+
+<!-- INSTRUCTIONS -->
+    <!-- Add an event handler for the <div>’s that represent the squares such that when you click in
+    a square it will put an X in the square and a popup will display the number of the square
+    where 0 is the first square up to 8 for the last square. One event handler should be able to
+    work for all squares. You may add Javascript, but you may not change the code from ttt2
+
+     Once you have the event handlers working, alternate between X’s turn or O’s turn. Put the
+    appropriate symbol (X or O) in the square when clicked. The popup should still be working.
+
+     Display whose turn it is in the area for that created previously.
+
+     Randomly choose whether X or O will start.
+
+     A square should not be allowed to be changed once an X or O is placed.
+
+     Add a button called “Start Game” that will clear the board and allow squares to be clicked
+    again -->
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Tic Tac Toe!</title>
+        <style>
+            .square {
+                width: 100px;
+                height: 100px;
+                border: 2px solid black;
+                margin: 5px;
+                /* stop auto newline and display flex*/
+                display:inline-flex;
+                /* center text */
+                justify-content: center;
+                align-items: center;
+                /* font size */
+                font-size: 300%;
+                /* added so that when text appears in block doesn't shift blocks */
+                vertical-align: top;
+            }
+
+            .square:hover {
+                background-color: grey;
+            }
+
+            /* did this to get 3x3 grid to line up properly. Thanks to TA */
+            body {
+                max-width: 400px;
+            }
+
+            .turn_track {
+                width: 200px;
+                border: 2px solid rgb(173, 205, 246);
+                background-color: rgb(133, 170, 219);
+                margin: 5px;
+                text-align: center;
+            }
+
+            .win_con {
+                width: 200px;
+                border: 2px solid rgb(84, 168, 106);
+                background-color: rgb(133, 219, 156);
+                margin: 5px;
+                text-align: center;
+            }
+
+        </style>
+
+        <!-- provided javascript -->
+        <script>
+            // Add a cool title on the page above the squares using an H1
+            document.write("<h1>Here We Go: Tic Tac Toe</h1>");
+
+            // initilize squares for grid
+            const NUM_SQUARES = 9;
+            for (i=0; i<NUM_SQUARES; i++) {
+                id = "sq"+i;
+                document.write("<div class='square' id='" + id + "'></div>");
+            }
+
+            // randomly pick start player
+            var xo = "X";
+            val = Math.floor(Math.random() * 10)
+            if(val <= 4) {
+                xo = "O"
+            }
+
+            // on a click add X to a square and display id
+            squares = document.querySelectorAll('.square');
+
+            function on_click_box(square) {
+                if(square.getAttribute("clicked_already") != true) {
+                    square.textContent = xo;
+                    alert("Clicked: " + square.id);
+                    //  switch players turn after click
+                    if(xo == "X") {
+                        xo = "O";
+                    }
+                    else {
+                        xo = "X";
+                    }
+                    // re-run whose turn it is text after click
+                    turn_change();
+                }
+                square.setAttribute('clicked_already', true);
+            }
+
+            // NEED TO FIX THIS SO NOT A LOOP
+            squares.forEach(function(square) {
+                square.addEventListener('click', function(){on_click_box(square);});
+                square.setAttribute('clicked_already', false);
+            });
+
+            // change text to start player
+            turn_tr = document.getElementsByClassName("turn_track");  // Find the element
+            function turn_change() {
+                turn_tr[0].innerText = "Its currently " + xo + "'s turn!";
+            }
+
+            // reset the board for a new game
+            function reset() {
+                squares.forEach(
+                    function(square) {
+                        square.textContent = '';
+                        // remove and re-add it so it can be clicked again
+                        square.setAttribute("clicked_already", false);
+                    }
+                );
+            }
+
+        </script>
+
+    </head>
+    <body>
+        <!-- Add a <div> to indicate whether it is X’s turn or O’s turn – put a border around it so that we
+        can see its placement -->
+        <div class = "turn_track">
+            Its currently X's turn!
+        </div>
+
+        <div class = "win_con">
+            Get three in a row to win!
+        </div>
+
+        <button id="start_game" onclick = "reset()">Start Game</button>
+
+        <!-- Add a <div> on the page to display a win condition (you will use this 
+        next week) – put a border around it so that we can see its placement -->
+
+        <!-- run this right before game starts -->
+        <script>
+            turn_change();
+        </script>
+    </body>
+</html>

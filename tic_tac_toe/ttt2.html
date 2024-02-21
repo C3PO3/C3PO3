@@ -27,7 +27,7 @@ border around it so that we can see its placement -->
                 border: 2px solid black;
                 margin: 5px;
                 /* stop auto newline and display flex*/
-                display: inline-flex;
+                display:inline-flex;
                 /* center text */
                 justify-content: center;
                 align-items: center;
@@ -39,13 +39,23 @@ border around it so that we can see its placement -->
                 background-color: grey;
             }
 
-            /* #sq3, #sq6 {
-            } */
+            /* did this to get 3x3 grid to line up properly. Thanks to TA */
+            body {
+                max-width: 400px;
+            }
 
             .turn_track {
                 width: 200px;
                 border: 2px solid rgb(173, 205, 246);
                 background-color: rgb(133, 170, 219);
+                margin: 5px;
+                text-align: center;
+            }
+
+            .win_con {
+                width: 200px;
+                border: 2px solid rgb(84, 168, 106);
+                background-color: rgb(133, 219, 156);
                 margin: 5px;
                 text-align: center;
             }
@@ -79,6 +89,10 @@ border around it so that we can see its placement -->
         can see its placement -->
         <div class = "turn_track">
             Its currently X's turn!
+        </div>
+
+        <div class = "win_con">
+            Get three in a row to win!
         </div>
 
         <!-- Add a <div> on the page to display a win condition (you will use this 

@@ -3,23 +3,7 @@
  -->
 
 <!-- INSTRUCTIONS -->
-    <!-- Add an event handler for the <div>’s that represent the squares such that when you click in
-    a square it will put an X in the square and a popup will display the number of the square
-    where 0 is the first square up to 8 for the last square. One event handler should be able to
-    work for all squares. You may add Javascript, but you may not change the code from ttt2
-
-     Once you have the event handlers working, alternate between X’s turn or O’s turn. Put the
-    appropriate symbol (X or O) in the square when clicked. The popup should still be working.
-
-     Display whose turn it is in the area for that created previously.
-
-     Randomly choose whether X or O will start.
-
-     A square should not be allowed to be changed once an X or O is placed.
-
-     Add a button called “Start Game” that will clear the board and allow squares to be clicked
-    again -->
-
+    
 
 <!DOCTYPE html>
 
@@ -91,9 +75,57 @@
 
             // on a click add X to a square and display id
             squares = document.querySelectorAll('.square');
+            var game_over = "f";
+
+            // part 4 check winner
+            function check_winner() {
+                // get board as an array
+                var current_board = [];
+                // check tie here so don't loop extra time
+                seen_dash = false;
+                squares.forEach(function(square) {
+                    if(square.textContent != "")
+                        current_board.push(square.textContent);
+                    else {
+                        current_board.push("-");
+                        seen_dash = true;
+                    }
+                });
+
+                //construct winning arrays
+                var win_arrs = [];
+                // get column win conditions
+                for(i = 0; i < 3; i++) {
+                    win_arrs[i] = current_board[i] + current_board[i + 3] + current_board[i + 6];
+                }
+                // get row win conditions
+                for(i = 0; i < 3; i++) {
+                    win_arrs[i+3] = current_board[i*3] + current_board[i*3 + 1] + current_board[i*3 + 2];
+                }
+                win_arrs[6] = current_board[0] + current_board[4] + current_board[8];
+                win_arrs[7] = current_board[2] + current_board[4] + current_board[6];
+
+                // check for winner
+                for(x = 0; x < 8; x++) {
+                    if(win_arrs[x] == "XXX") {
+                        document.getElementsByClassName("win_con")[0].textContent = "The winner is X!";
+                        game_over = "t";
+                        return;
+                    }
+                    else if(win_arrs[x] == "OOO") {
+                        document.getElementsByClassName("win_con")[0].textContent = "The winner is O!";
+                        game_over = "t";
+                        return;
+                    }
+                }
+                if(seen_dash == false) {
+                    document.getElementsByClassName("win_con")[0].textContent = "Oops. Its a tie.";
+                    game_over = "t";
+                }
+            }
 
             function on_click_box(square) {
-                if(square.getAttribute("clicked_already") == "f") {
+                if((square.getAttribute("clicked_already") == "f") && (game_over == "f")){
                     square.textContent = xo;
                     alert("Clicked: " + square.id);
                     //  switch players turn after click
@@ -105,6 +137,8 @@
                     }
                     // re-run whose turn it is text after click
                     turn_change();
+                    // part 4 check winner
+                    check_winner();
                 }
                 square.setAttribute('clicked_already', "t");
             }
@@ -128,10 +162,11 @@
                         square.textContent = '';
                         // remove and re-add it so it can be clicked again
                         square.setAttribute("clicked_already", "f");
+                        document.getElementsByClassName("win_con")[0].textContent = "Get three in a row to win!";
+                        game_over = "f";
                     }
                 );
             }
-
         </script>
 
     </head>

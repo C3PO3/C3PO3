@@ -36,6 +36,22 @@
                 max-width: 400px;
             }
 
+            /* cool fade in */
+            h1 {
+                animation: fadeInAnimation ease 5s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes fadeInAnimation {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
             .turn_track {
                 width: 200px;
                 border: 2px solid rgb(173, 205, 246);
@@ -77,6 +93,50 @@
             squares = document.querySelectorAll('.square');
             var game_over = "f";
 
+            // color codes winning part of grid
+            function color(x) {
+                if(x == 0) {
+                    squares[0].style.background = "green";
+                    squares[3].style.background = "green";
+                    squares[6].style.background = "green";
+                }
+                else if(x == 1) {
+                    squares[1].style.background = "green";
+                    squares[4].style.background = "green";
+                    squares[7].style.background = "green";
+                }
+                else if(x == 2) {
+                    squares[2].style.background = "green";
+                    squares[5].style.background = "green";
+                    squares[8].style.background = "green";
+                }
+                else if(x == 3) {
+                    squares[0].style.background = "green";
+                    squares[1].style.background = "green";
+                    squares[2].style.background = "green";
+                }
+                else if(x == 4) {
+                    squares[3].style.background = "green";
+                    squares[4].style.background = "green";
+                    squares[5].style.background = "green";
+                }
+                else if(x == 5) {
+                    squares[6].style.background = "green";
+                    squares[7].style.background = "green";
+                    squares[8].style.background = "green";
+                }
+                else if(x == 6) {
+                    squares[0].style.background = "green";
+                    squares[4].style.background = "green";
+                    squares[8].style.background = "green";
+                }
+                else if(x == 7) {
+                    squares[2].style.background = "green";
+                    squares[4].style.background = "green";
+                    squares[6].style.background = "green";
+                }
+            }
+
             // part 4 check winner
             function check_winner() {
                 // get board as an array
@@ -110,11 +170,15 @@
                     if(win_arrs[x] == "XXX") {
                         document.getElementsByClassName("win_con")[0].textContent = "The winner is X!";
                         game_over = "t";
+                        // extra function to color code winning combo
+                        color(x);
                         return;
                     }
                     else if(win_arrs[x] == "OOO") {
                         document.getElementsByClassName("win_con")[0].textContent = "The winner is O!";
                         game_over = "t";
+                        // extra function to color code winning combo
+                        color(x);
                         return;
                     }
                 }
@@ -171,6 +235,7 @@
                         square.setAttribute("clicked_already", "f");
                         document.getElementsByClassName("win_con")[0].textContent = "Get three in a row to win!";
                         game_over = "f";
+                        square.style.background = "white";
                     }
                 );
             }

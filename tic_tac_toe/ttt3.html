@@ -109,7 +109,7 @@
                 square.setAttribute('clicked_already', "t");
             }
 
-            // NEED TO FIX THIS SO NOT A LOOP
+            // loop to assign event listener for all squares
             squares.forEach(function(square) {
                 square.addEventListener('click', function(){on_click_box(square);});
                 square.setAttribute('clicked_already', "f");

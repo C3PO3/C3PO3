@@ -1,0 +1,106 @@
+
+<!-- Create a tag called <product> which will contain all of the data. Think about the best
+organization for the rest of the data.
+ Your file must include at least 10 products. There must be at least 3 categories across all
+products. At least 2 products should be in more than one category.
+ Your XML file must be well-formed and valid. You do not need a schema.
+ There should NO HTML code in your XML file – for ex, no heading tags.
+ Create a CSS file for an aesthetic display of the data (see the example files in canvas for
+inspiration) -->
+
+<?xml-stylesheet type="text/css" href="products.css"?>
+
+<product>
+    <item>
+        <name>T-shirt</name>
+        <description>Tie-die Grateful Dead T-shirt</description>
+        <price>35.00</price>
+        <categories>
+            <category>clothing</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Baseball hat</name>
+        <description>bright blue baseball hat with yellow star on front</description>
+        <price>5.00</price>
+        <categories>
+            <category>clothing</category>
+            <category>accessory</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Bubblegum</name>
+        <description>pink classic flavor gum pack</description>
+        <price>1.50</price>
+        <categories>
+            <category>food</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Ring Pop</name>
+        <description>ring lollipop. wearable candy</description>
+        <price>2.50</price>
+        <categories>
+            <category>food</category>
+            <category>accessory</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Ripped Jeans</name>
+        <description>light blue ripped jeans</description>
+        <price>20.00</price>
+        <categories>
+            <category>clothing</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Kit Kat</name>
+        <description>chocolate covered waffer</description>
+        <price>1.00</price>
+        <categories>
+            <category>food</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Hair Clip</name>
+        <description>light yellow hairclip</description>
+        <price>0.50</price>
+        <categories>
+            <category>accessory</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Converse</name>
+        <description>black shoes with a star symbol on the side</description>
+        <price>40.00</price>
+        <categories>
+            <category>clothing</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Scarf</name>
+        <description>yellow and white stripped scarf</description>
+        <price>5.00</price>
+        <categories>
+            <category>clothing</category>
+            <category>accessory</category>
+        </categories>
+    </item>
+
+    <item>
+        <name>Water Bottle</name>
+        <description>bottled poland springs water</description>
+        <price>1.50</price>
+        <categories>
+            <category>food</category>
+        </categories>
+    </item>
+</product>

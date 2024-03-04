@@ -1,0 +1,32 @@
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="products_7.css">
+        <!-- Include jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $.get("products.json", function(data){
+                    var items = data.product.item;
+                    items.forEach(function(item) {
+                        var productDiv = $('<div class="product"></div>');
+                        var itemDiv = $('<div class="item"></div>');
+                        var nameDiv = $('<div class="name"></div>').text(item.name);
+                        var descriptionDiv = $('<div class="description"></div>').text(item.description);
+                        var priceDiv = $('<div class="price"></div>').text(item.price);
+                        var categoriesDiv = $('<div class="categories"></div>').text(item.categories.category.join(", "));
+                        
+                        itemDiv.append(nameDiv, descriptionDiv, priceDiv, categoriesDiv);
+                        productDiv.append(itemDiv);
+                        $('body').append(productDiv);
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

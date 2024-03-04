@@ -1,0 +1,88 @@
+
+
+{
+    "product": {
+        "item": [
+            {
+                "name": "T-shirt",
+                "description": "Tie-die Grateful Dead T-shirt",
+                "price": 35,
+                "categories": {
+                    "category": ["clothing"]
+                }
+            },
+            {
+                "name": "Baseball hat",
+                "description": "bright blue baseball hat with yellow star on front",
+                "price": 5,
+                "categories": {
+                    "category": ["clothing", "accessory"]
+                }
+            },
+            {
+                "name": "Bubblegum",
+                "description": "pink classic flavor gum pack",
+                "price": 1.5,
+                "categories": {
+                    "category": ["food"]
+                }
+            },
+            {
+                "name": "Ring Pop",
+                "description": "ring lollipop. wearable candy",
+                "price": 2.5,
+                "categories": {
+                    "category": ["food", "accessory"]
+                }
+            },
+            {
+                "name": "Ripped Jeans",
+                "description": "light blue ripped jeans",
+                "price": 20,
+                "categories": {
+                    "category": ["clothing"]
+                }
+            },
+            {
+                "name": "Kit Kat",
+                "description": "chocolate covered waffer",
+                "price": 1,
+                "categories": {
+                    "category": ["food"]
+                }
+            },
+            {
+                "name": "Hair Clip",
+                "description": "light yellow hairclip",
+                "price": 0.5,
+                "categories": {
+                    "category": ["accessory"]
+                }
+            },
+            {
+                "name": "Converse",
+                "description": "black shoes with a star symbol on the side",
+                "price": 40,
+                "categories": {
+                    "category": ["clothing"]
+                }
+            },
+            {
+                "name": "Scarf",
+                "description": "yellow and white stripped scarf",
+                "price": 5,
+                "categories": {
+                    "category": ["clothing", "accessory"]
+                }
+            },
+            {
+                "name": "Water Bottle",
+                "description": "bottled poland springs water",
+                "price": 1.5,
+                "categories": {
+                    "category": ["food"]
+                }
+            }
+        ]
+    }
+}

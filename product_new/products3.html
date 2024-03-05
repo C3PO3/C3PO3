@@ -1,4 +1,11 @@
 
+<!-- In this file. create a button labelled “Filter” plus a drop-down box (<select>) listing the possible
+categories. The categories MUST BE read from the JSON data (it must NOT be hard-coded).
+When the user clicks the "filter" button, display the name of products that match the selected
+category within a div on the page. Do not display any other data for each product.
+Use JQuery as much as possible for this part. For example. use it to read the form elements, to
+assign the event handler, and to write to the page. -->
+    
 
 <!DOCTYPE html>
 
@@ -8,7 +15,19 @@
         <!-- Include jQuery library -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
+            // set up document and corresponding objects
             $(document).ready(function(){
+                // product3 code here
+                var filter = '<button type="button" onclick="filter_products()">Filter</button>';
+                $('body').append(filter);
+                
+                var selectButton = '<select name="filter_select" id="category_filter">\
+                                <option value="">Please choose an option</option>\
+                                <option value="default">Everything</option>\
+                                </select>';
+                $('body').append(selectButton);
+                var categoriesArr = [];
+                // product2 code here
                 $.get("products.json", function(data){
                     var items = data.product.item;
                     items.forEach(function(item) {
@@ -22,9 +41,58 @@
                         itemDiv.append(nameDiv, descriptionDiv, priceDiv, categoriesDiv);
                         productDiv.append(itemDiv);
                         $('body').append(productDiv);
+
+                        // new part 2 code
+                        item.categories.category.forEach(function(category) {
+                            if (categoriesArr.includes(category) == false) {
+                                categoriesArr.push(category);
+                            }
+                        });
+                    });
+                    categoriesArr.forEach(function(category) {
+                        $('#category_filter').append($('<option>', {
+                            value: category,
+                            text: category
+                        }));
                     });
                 });
             });
+
+            // filter function based on what is in the select field
+            function filter_products() {
+                current_val = $('#category_filter').val();
+                if(current_val == "") {
+                    alert("Error: Please select a category to filter by");
+                    return;
+                }
+                // clear all old items
+                $('.product').remove();
+                // write new stuff on page
+                $.get("products.json", function(data){
+                    var items = data.product.item;
+                    items.forEach(function(item) {
+                        var addItem = false;
+                        item.categories.category.forEach(function(category){
+                            if(category == current_val) {
+                                addItem = true;
+                            }
+                        });
+                        if((addItem == true) || (current_val == "default")) {
+                            var productDiv = $('<div class="product"></div>');
+                            var itemDiv = $('<div class="item"></div>');
+                            var nameDiv = $('<div class="name"></div>').text(item.name);
+                            var descriptionDiv = $('<div class="description"></div>').text(item.description);
+                            var priceDiv = $('<div class="price"></div>').text(item.price);
+                            var categoriesDiv = $('<div class="categories"></div>').text(item.categories.category.join(", "));
+                            
+                            itemDiv.append(nameDiv, descriptionDiv, priceDiv, categoriesDiv);
+                            productDiv.append(itemDiv);
+                            $('body').append(productDiv);
+                        }
+                    });
+                });
+            }
+
         </script>
     </head>
     <body>

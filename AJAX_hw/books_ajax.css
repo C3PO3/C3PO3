@@ -1,0 +1,31 @@
+
+
+body {
+    background-color: rgb(171, 227, 255); 
+}
+
+
+
+.book {
+    display: block;
+    border: 1px solid rgb(179, 180, 180); 
+    margin: 0.5em;  
+    padding: 0.5em;  
+    background-color: rgb(231, 231, 231);
+}
+
+.title::before {
+    content: "Title: ";
+}
+
+.author::before {
+    content: "Author: ";
+}
+
+.isbn::before {
+    content: "ISBN: ";
+}
+
+.pubDiv::before {
+    content: "Published first in: ";
+}

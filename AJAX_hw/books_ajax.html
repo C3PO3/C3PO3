@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="books_ajax.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function get_data(url)
+            {
+                result = fetch(url)
+                    .then(res=>res.text())
+                    .then(data=>
+                    {
+                        data = JSON.parse(data)
+                        message = ("<h1>Book you are searching for is: <b>Lord of the Rings</b>.</h1>")
+                         + ("<h2>There were a total of " + data.numFound + " results for your search.</h2>");
+                        $('body').append(message);
+                        list = data.docs;
+                        list.forEach(function(item) {
+                            if((item.hasOwnProperty("title")) && (item.hasOwnProperty("publish_year"))){
+                                bookDiv = $('<div class="book"></div>');
+                                titleDiv = $('<div class="title"></div>').text(item.title);
+                                if(item.hasOwnProperty("author"))
+                                    authorDiv = $('<div class="author"></div>').text(item.author);
+                                else
+                                    authorDiv = $('<div class="author"></div>').text("unknown");
+                                pubDiv = $('<div class="pubDiv"></div>').text(item.publish_year[0]);
+                                if(item.hasOwnProperty("isbn"))
+                                    isbnDiv = $('<div class="isbn"></div>').text(item.isbn[0]);
+                                else
+                                    isbnDiv = $('<div class="isbn"></div>').text("unknown");
+                                bookDiv.append(titleDiv, pubDiv, isbnDiv);
+                                $('body').append(bookDiv);
+                            }
+                        })
+                        assignmentInfo = "I used the openlibrary API. It contains books and related information such as author, isbn, etc.<br>";
+                        assignmentInfo += 'I found it online using the resources on canvas at: <a href="https://openlibrary.org/dev/docs/api/search" target="_blank">https://openlibrary.org/dev/docs/api/search</a>';
+                        assignmentInfo += 'I offered a books series name to search the api (the+lord+of+the+rings)<br>';
+                        assignmentInfo += "This could be useful for a library or book selling website. It could also be useful for a school or even looking through banned book lists as they have categories that books are sorted into."
+
+                        $('body').append(assignmentInfo);
+                    })
+                    .catch (error=> console.log(error))
+            }
+
+            $(document).ready(function(){
+                get_data("https://openlibrary.org/search.json?q=the+lord+of+the+rings");
+            });
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

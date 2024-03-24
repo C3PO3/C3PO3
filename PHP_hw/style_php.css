@@ -1,0 +1,19 @@
+
+.business_hours {
+    margin: 20px auto;
+    width: 400px;
+    background-color: rgb(255, 193, 193);
+    border: 1px solid rgb(86, 66, 66);
+    border-radius: 5px;
+    padding: 20px;
+}
+.business_hours h2 {
+    color: rgb(61, 61, 61);;
+}
+.business_hours ul {
+    list-style-type: none;
+    padding: 0;
+}
+.business_hours li {
+    margin-bottom: 10px;
+}
